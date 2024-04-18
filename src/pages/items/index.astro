@@ -1,0 +1,30 @@
+---
+import { db, isDbError, Item } from "astro:db";
+
+if (Astro.request.method.toUpperCase() !== "POST") {
+  Astro.redirect("/");
+}
+
+const data = await Astro.request.formData();
+let value = data.get("value");
+
+if (!value || typeof value !== "string") {
+  value = "test";
+}
+
+async function addItem(value: string) {
+  try {
+    await db.insert(Item).values({ value });
+    return "Created item with value: " + value;
+  } catch (e: unknown) {
+    if (isDbError(e)) {
+      return "A DB error occurred: " + JSON.stringify(e);
+    }
+    return "An unexpected error occurred: " + JSON.stringify(e);
+  }
+}
+
+const result = await addItem(value);
+---
+
+{result}
