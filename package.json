@@ -5,11 +5,10 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "preview-from-file": "/tmp/astro-db-test-database.db astro preview",
+    "preview-from-file": "ASTRO_DATABASE_FILE=/tmp/astro-db-test-database.db astro build && astro preview",
     "build": "astro check && astro build --remote",
     "preview": "astro preview",
-    "astro": "astro",
-    "push": "astro db push"
+    "astro": "astro"
   },
   "dependencies": {
     "@astrojs/check": "^0.5.10",
