@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "preview-from-file": "ASTRO_DATABASE_FILE=/tmp/astro-db-test-database.db astro build && astro preview",
+    "preview-from-file": "ASTRO_DATABASE_FILE=$pwd/astro-db-test-database.db astro build && astro preview",
     "build": "astro check && astro build --remote",
     "preview": "astro preview",
     "astro": "astro"
